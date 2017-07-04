@@ -8,21 +8,34 @@ import { intlReducer } from 'react-intl-redux';
 import en from '../translations/en';
 import fi from '../translations/fi';
 
+//import myfile1 from '/assets/mypic/gb_1278.jpg';
+
+
 // TODO: move these into redux?
 export const storeLocaleForUser = (user, locale) => localStorage.setItem(`locale#${user}`, locale);
 export const getLocaleForUser = user => localStorage.getItem(`locale#${user}`);
+
+//const test1variable = 15;
+//const test1 = (`url (${myfile1})`);
 
 addLocaleData([...localeEn, ...localeFi]);
 export const languages = {
   en: {
     translations: en,
-    name: 'English',
+    name: 'English 345', //+test1,
   },
   fi: {
     translations: fi,
-    name: 'Suomi',
+    name: 'Suomi 123',
   },
+
+   gee: {
+    translations: fi,
+    name: 'werwer',
+  },
+
 };
+
 
 export const defaultLang =
   (navigator.languages && navigator.languages[0]) ||

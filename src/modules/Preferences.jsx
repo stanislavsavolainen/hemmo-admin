@@ -9,6 +9,7 @@ import Button from 'material-ui/Button';
 
 import Card, {
   CardContent,
+  CardMedia,
 } from 'material-ui/Card';
 
 import { connect } from 'react-redux';
@@ -19,6 +20,42 @@ import { reset } from './Logout';
 import { languages, storeLocaleForUser } from '../utils/intl';
 
 import CardGridWrapper from '../components/CardGridWrapper';
+
+
+//**************************** */
+
+import Avatar from 'material-ui/Avatar';
+import FolderIcon from 'material-ui-icons/Folder';
+
+import imgUrl1 from '../assets/mypic/gb_1278.jpg';
+import imgUrl2 from '../assets/mypic/finland-flag-icon-32.png';
+
+
+const styles = {
+
+  mystyle1: {
+    background: `url(${imgUrl1})`,
+    height: 32,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    objectFit: 'cover',
+    width: 32,
+  },
+
+  mystyle2:{
+     background: `url(${imgUrl2})`,
+    height: 32,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    objectFit: 'cover',
+    width: 32,
+  }
+
+
+
+}
+
+
 
 const mapStateToProps = state => ({
   activeLanguage: state.intl.locale,
@@ -62,11 +99,31 @@ export default class Preferences extends React.Component {
       intl: { formatMessage },
     } = this.props;
 
+ //<Avatar src="../assets/mypic/gb_1278.jpg"></Avatar>  at <CardMedia> place here
+  
+  //<Card>
+    //         <CardMedia> <div style={styles.mystyle1} /> </CardMedia>
+    //  </Card>
+
+    let lang = "";
+
+    if( languages[activeLanguage] === languages.fi  ){
+      lang =  <CardMedia> <div style={styles.mystyle2} /> </CardMedia> 
+    }
+    else if(   languages[activeLanguage] === languages.en ){
+       lang =  <CardMedia> <div style={styles.mystyle1} /> </CardMedia> 
+    }
+
+
     return (
+       
+     
       <CardGridWrapper>
         <Card>
+         
           <CardContent>
             <Typography type="headline">{formatMessage({ id: 'language' })}</Typography>
+              
             <List>
               <ListItem
                 button
@@ -78,6 +135,7 @@ export default class Preferences extends React.Component {
                   languageMenuAnchor: e.currentTarget,
                 })}
               >
+               {lang}
                 <ListItemText
                   primary={formatMessage({ id: 'selectedLanguage' })}
                   secondary={languages[activeLanguage] ? languages[activeLanguage].name : 'unknown'}

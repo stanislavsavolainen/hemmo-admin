@@ -1,4 +1,21 @@
 body {
   margin: 0;
   padding: 0;
+  font-size:16px;
+  background: orange;
+  color: magenta;
 }
+ 
+ input[type="text"]{
+    color: blue;
+    font-size: 20px;
+ }
+
+  input[type="password"]{
+    color: red;
+    font-size: 20px;
+ }
+
+ td{
+   color: blueviolet;
+ }
