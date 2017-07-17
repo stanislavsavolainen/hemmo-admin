@@ -82,6 +82,8 @@ export default class Test2 extends React.Component {
         console.log('Fetch done successfuly !');
         //back-end response here
         //*********************************************************************** */
+        this.state.additionalValue = 'http-respond, method=POST ' + r;
+        this.setState(this.state);
       })
       .catch(err => {
         console.log('404 error, page not found');
@@ -100,7 +102,9 @@ export default class Test2 extends React.Component {
     let link = '/data_to_server2';
     // let query_string = "?data1="+this.state.fieldvalue; //key-value of variables
     let query_string =
-      '?data1=' +
+      '?field1=' +
+      this.state.fieldvalue +
+      '&data1=' +
       this.state.value1 +
       '&data2=' +
       this.state.value2 +
@@ -119,7 +123,7 @@ export default class Test2 extends React.Component {
       .then(response => {
         //server reply back
 
-        this.state.additionalValue = response;
+        this.state.additionalValue = 'http-respond, method=GET ' + response;
         this.setState(this.state);
       })
       .catch(err => {
