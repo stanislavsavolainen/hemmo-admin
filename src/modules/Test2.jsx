@@ -37,7 +37,7 @@ export default class Test2 extends React.Component {
 
   drawButton() {
     return (
-      <Button className="tyyli1" onClick={() => this.sendDataToServer2()}>
+      <Button className="tyyli1" onClick={() => this.sendDataToServer1()}>
         {' '}Send data to server{' '}
       </Button>
     );

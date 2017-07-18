@@ -42,6 +42,7 @@ import LoginIcon from 'material-ui-icons/AccountCircle';
 import LogoutIcon from 'material-ui-icons/ExitToApp';
 
 import TestIcon from 'material-ui-icons/Extension';
+import TestIcon2 from 'material-ui-icons/Build';
 
 // Components
 import Home from '../modules/Home';
@@ -56,6 +57,7 @@ import NotFound from '../modules/NotFound';
 
 import TestA from '../modules/Test1';
 import TestB from '../modules/Test2';
+import TestC from '../modules/Test3';
 
 // Routes
 const routeConfigs = [
@@ -138,6 +140,15 @@ const routeConfigs = [
     name: 'My test 2',
     component: TestB,
     icon: TestIcon,
+    requiresLogin: false,
+    hideWhenScope: [null],
+    showInMenu: true,
+  },
+  {
+    path: '/test3',
+    name: 'My test 3',
+    component: TestC,
+    icon: TestIcon2,
     requiresLogin: false,
     hideWhenScope: [null],
     showInMenu: true,
