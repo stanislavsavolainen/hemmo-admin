@@ -49,7 +49,7 @@ import Home from '../modules/Home';
 import Feedback from '../modules/Feedback';
 import FeedbackDetail from '../modules/FeedbackDetail';
 import Children from '../modules/Children';
-import ChildDetail from '../modules/ChildDetail';
+import ChildWrapper from '../modules/ChildWrapper';
 import Preferences from '../modules/Preferences';
 import Login from '../modules/Login';
 import Logout from '../modules/Logout';
@@ -71,11 +71,6 @@ const routeConfigs = [
     exact: true,
   },
   {
-    path: '/feedback/:feedbackId',
-    component: FeedbackDetail,
-    requiresLogin: true,
-  },
-  {
     path: '/feedback',
     name: 'Feedback',
     component: Feedback,
@@ -85,8 +80,8 @@ const routeConfigs = [
     exact: true,
   },
   {
-    path: '/children/:userId',
-    component: ChildDetail,
+    path: '/children/:childId',
+    component: ChildWrapper,
     requiresLogin: true,
     showInMenu: false,
   },

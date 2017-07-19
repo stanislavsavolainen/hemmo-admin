@@ -155,11 +155,9 @@ export default class Test3 extends React.Component {
     return (
       <div>
         <br />
-        <br />
         Your mood : {this.drawDropDownMenu()}
         <br /> <br />
         Your activities : {this.drawDropDownMenu2()}
-        <br />
         <br />
         <Button className="tyyli1" onClick={() => this.SendDataToServer()}>
           {' '}Send Feedback{' '}
@@ -261,7 +259,7 @@ export default class Test3 extends React.Component {
 
     return (
       <div className="luokka1">
-        jotain {this.drawLayout()}
+        {this.drawLayout()}
         <br />
         <br />
         feedback : {this.state.feedback_info}

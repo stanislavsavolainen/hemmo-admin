@@ -14,16 +14,25 @@ export default {
   needingAttentionExpalain:
     "Children who haven't send any feedback for long time.",
 
-  // Users view
-  userId: 'User ID',
+  // Children view
   email: 'E-mail',
   description: 'Description',
   showUserDetails: 'Details',
   userDetails: 'User details',
   lastFeedback: 'Last Feedback',
+  snoozeAlerts: 'Snooze alerts',
+  snoozeAlertsExplain:
+    "Choose whether to snooze alerts for chosen child for next 30 days or until turned back again from child's profile.",
+  forever: 'Forever',
+  next30days: 'Next 30 days',
+
+  // Child view
+  showAlerts: 'Show alerts if not received any feedback in 3 months.',
+  deleteChild: 'Delete child',
+  deleteChildWarn:
+    'Deleting this child will destroy the child and all their feedback forever! Only proceed if you are absolutely sure.',
 
   // Preferences view
-  language: 'App language',
   appLanguageExplain: 'Selected laguage is applied only for this browser.',
   selectedLanguage: 'Selected language',
   resetState: 'Reset app state',
@@ -46,11 +55,16 @@ export default {
   createdAt: 'Created at',
   active: 'Active',
   resetPassword: 'Reset password',
+  resetPasswordExplanation: 'A new password will be emailed to the user.',
 
   // Miscellaneous
   close: 'Close',
   save: 'Save',
   noDatatoShow: 'There is no data to display.',
+  deleteDefaultTitle: 'Confirm delete',
+  cancel: 'Cancel',
+  delete: 'Delete',
+  pageNotFound: 'Requested page could not be found.',
 
   // Table toolbar
   childsName: "Child's name",
@@ -88,7 +102,7 @@ export default {
   nobody: '(nobody)',
   feedbackStartDate: 'Date',
 
-  percentHappy: '{percent}% positive feedback',
+  /*percentHappy: '{percent}% positive feedback',
   assigneeExplanation:
     'New feedback by {child} will be assigned to this employee automatically.',
   feedbackBy: 'Feedback by {child}',
@@ -102,8 +116,7 @@ export default {
   deleteDefaultWarn:
     'Deleting this item will destroy it forever! Only proceed if you are absolutely sure.',
   areYouSure: 'Are you sure?',
-  cancel: 'Cancel',
-  delete: 'Delete',
+  */
 
   percentHappyInSession: '{percent}% positive in feedback',
   noFeedbackGiven: 'No feedback given yet',

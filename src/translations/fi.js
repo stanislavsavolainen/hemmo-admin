@@ -14,12 +14,22 @@ export default {
   needingAttentionExpalain:
     'Lapset ketkä eivät ole antaneet palautetta pitkään aikaan.',
 
-  // Users view
-  userId: 'User ID',
+  // Children view
   email: 'Sähköpostiosoite',
   description: 'Kuvaus',
   showUserDetails: 'Lisätiedot',
   lastFeedback: 'Viimeisin palaute',
+  snoozeAlerts: 'Hiljennä hälytykset',
+  snoozeAlertsExpalin:
+    'Valitse haluatko huljentää hälytykset kyseiselle lapselle seuraavaksi 30 päiväksi vai siihen asti kunnes ne laitetaan takaisin päälle lapsen profiilisivulta.',
+  forever: 'lopullisesti',
+  next30days: 'Seuraavaksi 30 päiväksi',
+
+  // Child view
+  showAlerts: 'Näytä hälytykset, jos palautetta ei ole annettu 3 kuukauteen.',
+  deleteChild: 'Poista lapsi',
+  deleteChildWarn:
+    'Lapsen poistamista ei voi perua! Tämä toiminto poistaa lapsen lisäksi kaikki hänen lähettämät palautteet.',
 
   // Preferences view
   language: 'Sovelluksen kieli',
@@ -46,6 +56,8 @@ export default {
   createdAt: 'Lisätty',
   active: 'Aktiivinen',
   resetPassword: 'Resetoi salasana',
+  resetPasswordExplanation:
+    'Uusi salasana lähetetään käyttäjälle sähköpostilla.',
 
   // Table toolbar
   childsName: 'Lapsen nimi',
@@ -56,6 +68,10 @@ export default {
   close: 'Sulje',
   save: 'Tallenna',
   noDatatoShow: 'Saatavilla ei ole dataa mitä näyttää.',
+  deleteDefaultTitle: 'Vahvista poisto',
+  cancel: 'Peruuta',
+  delete: 'Poista',
+  pageNotFound: 'Haettua sivua ei löytynyt.',
 
   // Hemmo
   newFeedback: 'Sinun palautteet',
@@ -88,7 +104,7 @@ export default {
   nobody: '(ei kukaan)',
   feedbackStartDate: 'Päivämäärä',
 
-  percentHappy: '{percent}% positiivista palautetta',
+  /*percentHappy: '{percent}% positiivista palautetta',
   assigneeExplanation:
     'Palautteet lapselta {child} kohdistetaan automattisesti valitulle työntekijälle.',
   feedbackBy: 'Palautetta lapselta {child}',
@@ -104,7 +120,7 @@ export default {
   deleteDefaultWarn: 'Tätä toimintoa ei voi perua! Oletko varma?',
   areYouSure: 'Oletko varma?',
   cancel: 'Palaa',
-  delete: 'Poista',
+  ,*/
 
   percentHappyInSession: '{percent}% positiivistä palautetta',
   noFeedbackGiven: 'Lapsi ei ole vielä antanut palautetta sovellukseen.',
