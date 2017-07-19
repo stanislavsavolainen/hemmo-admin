@@ -47,7 +47,7 @@ import TestIcon2 from 'material-ui-icons/Build';
 // Components
 import Home from '../modules/Home';
 import Feedback from '../modules/Feedback';
-import FeedbackDetail from '../modules/FeedbackDetail';
+// import FeedbackDetail from '../modules/FeedbackDetail';
 import Children from '../modules/Children';
 import ChildWrapper from '../modules/ChildWrapper';
 import Preferences from '../modules/Preferences';
