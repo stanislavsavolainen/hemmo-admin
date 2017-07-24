@@ -217,7 +217,7 @@ export default class Test3 extends React.Component {
 
     return (
       <div>
-        <List>
+        <List style={{ background: 'orange' }}>
           <ListItem
             button
             aria-haspopup="true"
@@ -245,7 +245,7 @@ export default class Test3 extends React.Component {
   render() {
     /*
     switch(this.state.selectedIndex){
-        case 0: this.state.feedback_info = "I'm satisfied"; break;
+        style={{ color: 'red' }} 0: this.state.feedback_info = "I'm satisfied"; break;
         case 1: this.state.feedback_info = "that's ok"; break;
         case 2: this.state.feedback_info = "I'm unhappy"; break;
         default: this.state.feedback_info = "no data"; break;

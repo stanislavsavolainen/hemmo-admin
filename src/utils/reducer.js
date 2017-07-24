@@ -8,6 +8,8 @@ import { reducers as restReducers } from './rest';
 
 import { reset } from '../modules/Logout';
 
+import { reducer as test } from '../modules/Test4';
+
 const reducers = {
   // Navigation drawer state
   drawer,
@@ -23,6 +25,9 @@ const reducers = {
 
   // REST API endpoints' state
   ...restReducers,
+
+  //Test4
+  test,
 };
 
 const appReducer = combineReducers(reducers);
