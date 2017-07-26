@@ -29,6 +29,11 @@ export const reducer = createReducer(
   {
     [action1]: (state, val) => {
       return { ...state, field_value: val };
+
+      /* 
+     [action1]: state => {
+      field_value: state;
+    */
     },
   },
   initialState,
@@ -38,6 +43,8 @@ export const reducer = createReducer(
 const mapStateToProps = state => ({
   field_value: state.test.field_value,
   foo: state.test.foo,
+  //field_value: state.field_value,
+  //foo: state.foo,
 });
 
 //dispatch action to props --> state.dispatch() ---> can change values of store
