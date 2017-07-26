@@ -27,11 +27,13 @@ export default class Test3 extends React.Component {
         'Riehakas',
         'Yksinäinen',
         'Innostunut',
+        '123456',
       ],
       activities: [
         'Puuhasimme-Kokkailu',
         'Puuhasimme-Lukeminen',
         'Lemmikit-Kotielaimet',
+        '2839123819020',
       ],
 
       //activities = ["Lukeminen", "Kokkailu", "Lemmikit", ""]

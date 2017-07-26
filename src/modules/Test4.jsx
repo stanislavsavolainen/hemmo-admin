@@ -10,6 +10,7 @@ import { createAction, createReducer } from 'redux-act';
 // Initial state (hold this page values for reducer)
 const initialState = {
   field_value: 'empty...',
+  foo: 'bar',
 };
 
 // Reducer (create reducer for this react-page and export new values to store)
@@ -26,8 +27,8 @@ let reducer_action = {
 
 export const reducer = createReducer(
   {
-    [action1]: state => {
-      field_value: state;
+    [action1]: (state, val) => {
+      return { ...state, field_value: val };
     },
   },
   initialState,
@@ -35,8 +36,10 @@ export const reducer = createReducer(
 
 //store data from redux to component
 const mapStateToProps = state => ({
-  field_value: state.field_value,
+  field_value: state.test.field_value,
+  foo: state.test.foo,
 });
+
 //dispatch action to props --> state.dispatch() ---> can change values of store
 const mapDispatchToProps = dispatch => ({
   //change value from props
@@ -58,7 +61,6 @@ export default class Test4 extends React.Component {
       </div>
     );
   }
-
   //-------------------------------------------------
 
   render() {
@@ -66,7 +68,8 @@ export default class Test4 extends React.Component {
       <p>
         {' '}Redux test ! <br />
         <br /> {this.draw_material_ui_gui()} <br /> Redux store data :{' '}
-        {this.props.field_value}{' '}
+        {this.props.field_value} <br />
+        {this.props.foo}{' '}
       </p>
     );
     // return <p> Hello !!!!</p>;
