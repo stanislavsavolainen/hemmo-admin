@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
 import { replace } from 'react-router-redux';
 import { createAction } from 'redux-act';
@@ -14,15 +13,14 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   doLogout() {
-    dispatch(reset());
+    dispatch(dispatch(reset()));
   },
   redirect(path) {
     dispatch(replace(path));
   },
 });
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class Logout extends React.Component {
+class Logout extends React.Component {
   componentDidMount() {
     if (!this.props.auth.data.token) {
       this.deauthSuccess();
@@ -50,3 +48,5 @@ export default class Logout extends React.Component {
     return <FullscreenSpinner />;
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Logout);

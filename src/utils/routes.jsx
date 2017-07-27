@@ -82,6 +82,12 @@ const routeConfigs = [
     exact: true,
   },
   {
+    path: '/children/:childId/feedback/:feedbackId',
+    component: ChildWrapper,
+    requiresLogin: true,
+    showInMenu: false,
+  },
+  {
     path: '/children/:childId',
     component: ChildWrapper,
     requiresLogin: true,
@@ -232,26 +238,6 @@ class AuthRedirectRoute extends React.Component {
     );
   }
 }
-
-// AuthRedirectRoute wrapper which mounts routeConfig at '/' regardless of configured path
-/*export const IndexRoute = ({ routeConfig, ...rest }) => {
-  const indexRoute = {
-    ...routeConfig,
-    path: '/',
-  };
-
-  return (
-    <AuthRedirectRoute
-      exact
-      {...rest}
-      {...indexRoute}
-    />
-  );
-};
-
-IndexRoute.propTypes = {
-  routeConfig: RouteConfigShape.isRequired,
-};*/
 
 // Map all configured routes into AuthRedirectRoute components
 export const ConfiguredRoutes = ({ ...rest }) =>

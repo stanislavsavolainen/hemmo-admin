@@ -38,7 +38,7 @@ const mapDispatchToProps = dispatch => ({
     );
   },
   doClearState: () => {
-    dispatch(reset());
+    dispatch(dispatch(reset()));
   },
   updateDetails: (id, data, cb) => {
     dispatch(
@@ -51,8 +51,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 @injectIntl
-@connect(mapStateToProps, mapDispatchToProps)
-export default class Preferences extends React.Component {
+class Preferences extends React.Component {
   constructor(props) {
     super(props);
 
@@ -239,7 +238,7 @@ export default class Preferences extends React.Component {
           <Grid item xs={12} sm={6}>
             <Paper className="paper">
               <Typography type="headline">
-                {formatMessage({ id: 'language' })}
+                {formatMessage({ id: 'appLanguage' })}
               </Typography>
               <Typography>
                 {formatMessage({ id: 'appLanguageExplain' })}
@@ -310,3 +309,5 @@ export default class Preferences extends React.Component {
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Preferences);

@@ -38,8 +38,7 @@ const mapDispatchToProps = dispatch => ({
 
 @injectIntl
 @withRouter
-@connect(mapStateToProps, mapDispatchToProps)
-export default class Home extends React.Component {
+class Home extends React.Component {
   state = {
     assigneeId: this.props.user.id,
     orderBy: 'createdAt',
@@ -105,13 +104,13 @@ export default class Home extends React.Component {
     );
   }
 
-  openFeedback(id) {
-    const path = '/feedback/' + id;
+  openFeedback(row) {
+    const path = '/feedback/' + row.id;
     this.props.changeView(path);
   }
 
-  openChild(id) {
-    const path = '/children/' + id;
+  openChild(row) {
+    const path = '/children/' + row.id;
     this.props.changeView(path);
   }
 
@@ -157,3 +156,5 @@ export default class Home extends React.Component {
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

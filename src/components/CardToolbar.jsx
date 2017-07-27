@@ -83,7 +83,6 @@ export default class CardToolbar extends React.Component {
     const { customLabels, hideElems, intl: { formatMessage } } = this.props;
     const pageEntries = this.state.pageEntries;
     const totalEntries = this.props.totalEntries;
-    const page = this.state.page;
     const pages = Math.ceil(totalEntries / pageEntries);
     let toolbarItems = [];
 
@@ -103,18 +102,20 @@ export default class CardToolbar extends React.Component {
     }
 
     // Free textfield search for name #1
-    toolbarItems.push(
-      <TextField
-        key="name1"
-        name="name1"
-        className="text-field"
-        label={formatMessage({
-          id: customLabels.name1 ? customLabels.name1 : 'name',
-        })}
-        onChange={this.handleKeywordSearch.bind(this)}
-        marginForm
-      />,
-    );
+    if (hideElems && !hideElems.includes('name1')) {
+      toolbarItems.push(
+        <TextField
+          key="name1"
+          name="name1"
+          className="text-field"
+          label={formatMessage({
+            id: customLabels.name1 ? customLabels.name1 : 'name',
+          })}
+          onChange={this.handleKeywordSearch.bind(this)}
+          marginForm
+        />,
+      );
+    }
 
     // Free textfield search for name #2
     if (hideElems && !hideElems.includes('name2')) {
@@ -207,7 +208,6 @@ export default class CardToolbar extends React.Component {
 CardToolbar.propTypes = {
   refresh: PropTypes.func.isRequired,
   totalEntries: PropTypes.number.isRequired,
-  modelName: PropTypes.string.isRequired,
   hideElems: PropTypes.array.isRequired,
   customLabels: PropTypes.object.isRequired,
 };

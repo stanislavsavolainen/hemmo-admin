@@ -7,6 +7,8 @@ export default {
   Preferences: 'Asetukset',
   Logout: 'Kirjaudu ulos',
   Login: 'Kirjaudu sisään',
+  Children: 'Lapset',
+  Feedback: 'Palautteet',
 
   // Home
   latestFeedback: 'Viimeisimmät palautteet',
@@ -21,18 +23,43 @@ export default {
   lastFeedback: 'Viimeisin palaute',
   snoozeAlerts: 'Hiljennä hälytykset',
   snoozeAlertsExpalin:
-    'Valitse haluatko huljentää hälytykset kyseiselle lapselle seuraavaksi 30 päiväksi vai siihen asti kunnes ne laitetaan takaisin päälle lapsen profiilisivulta.',
+    'Valitse haluatko hiljentää hälytykset kyseiselle lapselle seuraavaksi 30 päiväksi vai siihen asti kunnes ne laitetaan takaisin päälle lapsen profiilisivulta.',
   forever: 'lopullisesti',
   next30days: 'Seuraavaksi 30 päiväksi',
+
+  // Feedback
+  deleteFeedbackWarn:
+    'Palautteen poistamista ei voi perua! Tämä toiminto poistaa palautteen lopullisesti.',
+  notReviewed: 'Ei käsitelty',
+  reviewed: 'Käsitelty',
+  markUnhandled: 'Merkitse käsittelemättömäksi',
+  markReviewed: 'Merkitse käsitellyksi',
+  deleteFeedback: 'Poista palaute',
+  moods: 'Mielialat',
+  date: 'Päivämäärä',
+  activities: 'Aktiviteetit',
+  attachments: 'Liitteet',
+  downloadAttachment: 'Lataa liitetiedosto',
+  attachmentFetchError: 'Virhe ladatessa liitettä. Yritä uudelleen myöhemmin.',
+  attachment: 'Liite',
+  positive: 'Positiivinen',
+  negative: 'Negatiivinen',
+  neutral: 'Neutraali',
 
   // Child view
   showAlerts: 'Näytä hälytykset, jos palautetta ei ole annettu 3 kuukauteen.',
   deleteChild: 'Poista lapsi',
   deleteChildWarn:
     'Lapsen poistamista ei voi perua! Tämä toiminto poistaa lapsen lisäksi kaikki hänen lähettämät palautteet.',
+  childDetails: 'Lapsen tiedot',
+  feedbackList: 'Palautelista',
+  givenMood: 'Anna fiilis',
+  givenMoods: 'Annetut fiilikset',
+  givenMoodsExplain: 'Työntekijän antamat fiilikset annetuille palautteille.',
+  selectFeedback: 'Valitse haluamasi palaute ylhäältä.',
 
   // Preferences view
-  language: 'Sovelluksen kieli',
+  appLanguage: 'Sovelluksen kieli',
   appLanguageExplain: 'Valittu kieli asetetaan vain tälle selaimelle.',
   selectedLanguage: 'Valittu kieli',
   resetState: 'Nollaa sovelluksen tila',
@@ -72,30 +99,7 @@ export default {
   cancel: 'Peruuta',
   delete: 'Poista',
   pageNotFound: 'Haettua sivua ei löytynyt.',
-
-  // Hemmo
-  newFeedback: 'Sinun palautteet',
-  newFeedbackDesc: 'Sinulle merkityt palautteet',
-  newFeedbackEmpty: 'Kaikki palautteet käsitelty!',
-
-  unhandledFeedback: 'Kaikki palautteet',
-  unhandledFeedbackDesc: 'Kaikki käsittelemättömät palautteet',
-  unhandledFeedbackEmpty: 'Kaikki järjestelmässä olevat palautteet käsitelty!',
-
-  routeHome: 'Koti',
-  Sessions: 'Palautteet',
-  Children: 'Lapset',
-  Feedback: 'Palautteet',
-  routeChildren: 'Lapset',
-  routeLogin: 'Kirjaudu sisään',
-  routeFeedbackDetails: 'Palautteen tiedot',
-  routeChildDetails: 'Lapsen tiedot',
-  routePreferences: 'Asetukset',
-  routeLogout: 'Kirjaudu ulos',
-
-  feedback: 'Palautteet',
-  children: 'Lapset',
-  rowsPerPage: 'Riviä per sivu',
+  selectValue: '- valitse -',
 
   name: 'Nimi',
   registrationDate: 'Käyttäjän luontipvm.',
@@ -103,44 +107,4 @@ export default {
   assignee: 'Kohdistettu työntekijä',
   nobody: '(ei kukaan)',
   feedbackStartDate: 'Päivämäärä',
-
-  /*percentHappy: '{percent}% positiivista palautetta',
-  assigneeExplanation:
-    'Palautteet lapselta {child} kohdistetaan automattisesti valitulle työntekijälle.',
-  feedbackBy: 'Palautetta lapselta {child}',
-  deleteUser: 'Poista {child}',
-  deleteUserDesc:
-    'Poista käyttäjä sekä kaikki heidän antamat palautteet järjestelmästä',
-
-  deleteUserWarn:
-    'Käyttäjän poistamista ei voi perua! Tämä toiminto poistaa käyttäjän lisäksi kaikki käyttäjän lähettämät palautteet.',
-  deleteFeedbackWarn:
-    'Palautteen poistamista ei voi perua! Tämä toiminto poistaa palautteen lopullisesti.',
-
-  deleteDefaultWarn: 'Tätä toimintoa ei voi perua! Oletko varma?',
-  areYouSure: 'Oletko varma?',
-  cancel: 'Palaa',
-  ,*/
-
-  percentHappyInSession: '{percent}% positiivistä palautetta',
-  noFeedbackGiven: 'Lapsi ei ole vielä antanut palautetta sovellukseen.',
-  reviewStatus: 'Käsittelyn status',
-  notReviewed: 'Ei käsitelty',
-  reviewed: 'Käsitelty',
-
-  markUnhandled: 'Merkitse käsittelemättömäksi',
-  markReviewed: 'Merkitse käsitellyksi',
-
-  deleteFeedback: 'Poista palaute',
-
-  back: 'Takaisin',
-
-  attachmentFetchError: 'Virhe ladatessa liitettä. Yritä uudelleen myöhemmin.',
-  attachment: 'Liite',
-  downloadAttachment: 'Lataa liitetiedosto',
-
-  feedbackRound: 'Kierros {round}',
-  feedbackHappyMood: 'Mieliala: Iloinen',
-  feedbackUnhappyMood: 'Mieliala: Onneton',
-  feedbackNeutralMood: 'Mieliala: Neutraali',
 };
