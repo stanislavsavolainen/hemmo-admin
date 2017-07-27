@@ -15,12 +15,12 @@ const initialState = {
 
 //field_names
 const field_title = {
-  field_login: 'f_login',
-  field_password: 'f_',
-  field_name: 'f_login',
-  field_surname: 'f_login',
-  field_profession: 'f_login',
-  field_email: 'f_email',
+  login: 'f_login',
+  password: 'f_password',
+  name: 'f_name',
+  surname: 'f_surname',
+  profession: 'f_profession',
+  email: 'f_email',
 };
 
 import { connect } from 'react-redux';
@@ -31,10 +31,14 @@ export const HandleDataAction = createAction('handle_action');
 
 export const reducer = createReducer(
   {
-    [HandleDataAction]: (state, n_id, n_content) => {
-      if (n_id === field_title.field_login) {
+    [HandleDataAction]: (state, params) => {
+      const n_id = params.id;
+      const n_content = params.content;
+      console.log(n_id + '>>> ' + n_content);
+
+      if (n_id === field_title.login) {
         state.iLogin = n_content;
-      } else if (n_id === field_title.field_password) {
+      } else if (n_id === field_title.password) {
         state.iPassword = n_content;
       } else if (n_id === field_title.name) {
         state.iName = n_content;
@@ -47,7 +51,8 @@ export const reducer = createReducer(
       }
 
       //return { ...state, field_value: val };
-      return state;
+      return { ...state };
+      //return { ...state, field_value: val };
     },
   },
   initialState,
@@ -56,7 +61,7 @@ export const reducer = createReducer(
 const mapStateToProps = state => ({
   pLogin: state.multidata.iLogin,
   pPassword: state.multidata.iPassword,
-  pName: state.multidata.pName,
+  pName: state.multidata.iName,
   pSurname: state.multidata.iSurname,
   pProfession: state.multidata.iProfession,
   pEmail: state.multidata.iEmail,
@@ -64,6 +69,11 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   // dispatch(HandleDataAction),
+  saveFieldValue: (m_id, m_content) => {
+    console.log(' ******** Dispatch ****** ' + m_content);
+
+    dispatch(HandleDataAction({ id: m_id, content: m_content }));
+  },
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -97,7 +107,8 @@ export default class Test5 extends React.Component {
     return (
       <TextField
         className="tyyli1"
-        onChange={event => this.getValueFromField(field_id, event.target.value)}
+        onChange={event =>
+          this.props.saveFieldValue(field_id, event.target.value)}
       />
     );
   }
@@ -107,7 +118,8 @@ export default class Test5 extends React.Component {
       <TextField
         className="tyyli1"
         type="password"
-        onChange={event => this.getValueFromField(field_id, event.target.value)}
+        onChange={event =>
+          this.props.saveFieldValue(field_id, event.target.value)}
       />
     );
   }
@@ -117,13 +129,13 @@ export default class Test5 extends React.Component {
   drawGUI() {
     return (
       <div>
-        <br /> Login {this.drawField(field_title.field_login)}
-        <br /> Password : {this.drawPasswordField(field_title.field_password)}
+        <br /> Login {this.drawField(field_title.login)}
+        <br /> Password : {this.drawPasswordField(field_title.password)}
         <br />
-        <br /> Name : {this.drawField(field_title.field_name)}
-        <br /> Surname {this.drawField(field_title.field_surname)}
-        <br /> Profession {this.drawField(field_title.field_profession)}
-        <br /> E-mail {this.drawField(field_title.field_email)}
+        <br /> Name : {this.drawField(field_title.name)}
+        <br /> Surname {this.drawField(field_title.surname)}
+        <br /> Profession {this.drawField(field_title.profession)}
+        <br /> E-mail {this.drawField(field_title.email)}
         <br /> Radio - button option 1
         <br /> radio - button option 2
         <br /> {this.drawButton()}
@@ -138,7 +150,16 @@ export default class Test5 extends React.Component {
       // ------------- redux store props ---------------------
 
       <div className="luokka1">
-        {' '}<p> test 5 </p>  <br /> {this.drawGUI()}
+        {' '}<p> test 5 </p> <br /> {this.drawGUI()}
+        <br />
+        <br />
+        Print redux store (this page props) :
+        <br /> Login : {this.props.pLogin}
+        <br /> Password : {this.props.pPassword}
+        <br /> Name : {this.props.pName}
+        <br /> Surname : {this.props.pSurname}
+        <br /> Profession : {this.props.iProfession}
+        <br /> Email : {this.props.pEmail}
       </div>
     );
   }
