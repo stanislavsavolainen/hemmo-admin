@@ -43,6 +43,7 @@ import LogoutIcon from 'material-ui-icons/ExitToApp';
 
 import TestIcon from 'material-ui-icons/Extension';
 import TestIcon2 from 'material-ui-icons/Build';
+import TestIcon3 from 'material-ui-icons/Language';
 
 // Components
 import Home from '../modules/Home';
@@ -60,6 +61,7 @@ import TestB from '../modules/Test2';
 import TestC from '../modules/Test3';
 import TestD from '../modules/Test4';
 import TestE from '../modules/Test5';
+import TestF from '../modules/Test6';
 
 // Routes
 const routeConfigs = [
@@ -170,6 +172,15 @@ const routeConfigs = [
     name: 'My test 5',
     component: TestE,
     icon: TestIcon2,
+    requiresLogin: false,
+    hideWhenScope: [null],
+    showInMenu: true,
+  },
+  {
+    path: '/test6',
+    name: 'My test 6',
+    component: TestF,
+    icon: TestIcon3,
     requiresLogin: false,
     hideWhenScope: [null],
     showInMenu: true,

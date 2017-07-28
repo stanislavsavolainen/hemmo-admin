@@ -133,7 +133,7 @@ const rest = reduxApi({
         meta: emptyMeta,
         name: 'Feedback',
       },
-      action,
+      action, // options : { method : 'GET'}
     ) {
       if (data) {
         return {
@@ -214,6 +214,12 @@ const rest = reduxApi({
         };
       }
       return data;
+    },
+  },
+  reducer_module1: {
+    url: `${apiRoot}/link1`,
+    options: {
+      method: 'post',
     },
   },
 })
