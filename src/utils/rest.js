@@ -221,6 +221,10 @@ const rest = reduxApi({
     options: {
       method: 'post',
     },
+    transformer(data, prevData, action) {
+      //http-response from server (redux-rest)
+      return { foo: data };
+    },
   },
 })
   .use('options', (url, params, getState) => {

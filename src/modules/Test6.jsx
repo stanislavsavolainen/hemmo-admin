@@ -9,7 +9,11 @@ var global_var = 'not defined';
 
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  server_answer: state.reducer_module1.data.foo,
+
+  // http-response from rest "handler4"
+});
 
 const mapDispatchToProps = dispatch => ({
   click1() {
@@ -49,6 +53,8 @@ export default class Test6 extends React.Component {
         >
           {' '}Using rest dispatch{' '}
         </Button>
+        <br />
+        <br />asd: {this.props.server_answer}
       </p>
     );
   }
