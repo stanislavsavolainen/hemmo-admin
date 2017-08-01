@@ -62,6 +62,7 @@ import TestC from '../modules/Test3';
 import TestD from '../modules/Test4';
 import TestE from '../modules/Test5';
 import TestF from '../modules/Test6';
+import TestG from '../modules/Test7';
 
 // Routes
 const routeConfigs = [
@@ -180,6 +181,15 @@ const routeConfigs = [
     path: '/test6',
     name: 'My test 6',
     component: TestF,
+    icon: TestIcon3,
+    requiresLogin: false,
+    hideWhenScope: [null],
+    showInMenu: true,
+  },
+  {
+    path: '/test7',
+    name: 'My test 7',
+    component: TestG,
     icon: TestIcon3,
     requiresLogin: false,
     hideWhenScope: [null],

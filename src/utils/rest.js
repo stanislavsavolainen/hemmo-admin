@@ -226,6 +226,21 @@ const rest = reduxApi({
       return { foo: data };
     },
   },
+  //get-method with query string
+  reducer_module2: {
+    url: `${apiRoot}/link2`,
+    options: {
+      method: 'post',
+    },
+    transformer(data, prevData, action) {
+      //http-response from server (redux-rest)
+      return { foo: data };
+    },
+  },
+  reducer_module3: {
+    url: `${apiRoot}/link3`,
+    crud: true,
+  },
 })
   .use('options', (url, params, getState) => {
     const { auth: { data: { token } } } = getState();
