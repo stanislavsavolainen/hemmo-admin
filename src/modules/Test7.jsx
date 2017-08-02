@@ -5,8 +5,8 @@ var field = [];
 var field_elements = [];
 var field_value = 'not defined';
 
-//initialState
-const initialState = { value: 'unknown' };
+//initialState (write react value dirrect to reducer, calling dispatch function you update your value)
+const initialState = { value: 'unknown', i_field_elements: [''] };
 
 import rest from '../utils/rest';
 
@@ -28,29 +28,33 @@ import { connect } from 'react-redux';
 
 //redux-local
 
-/*
 import { createAction, createReducer } from 'redux-act';
 export const HandleDataAction2 = createAction('handle_action2');
 
+export const reducer = createReducer(
+  {
+    [HandleDataAction2]: (state, tmp) => {
+      state.value = field_value;
 
- export const reducer = createReducer({
-  
-    [HandleDataAction2]: (state) => {
-     
-        state.value = field_value;
+      console.log(
+        ' ********************* Button add data presset 2 ' + state.value,
+      );
 
-        console.log("Button add data presset2")
+      //dispatch(HandleDataAction2());
+      let element = (
+        <TableRow>
+          <TableCell>
+            {' '}{field_value}{' '}
+          </TableCell>
+        </TableRow>
+      );
+      //field.push(element);
 
-        //dispatch(HandleDataAction2());
-         let element = <TableRow><TableCell> { field_value  } </TableCell></TableRow> ;
-        field.push(element);
-
-        return { ...state };
-     }
-
-}, initialState );
-
-*/
+      return { state };
+    },
+  },
+  initialState,
+);
 
 const mapStateToProps = state => ({
   //value: state.value
@@ -58,29 +62,36 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  HandleDataTest() {
+    console.log('handle data dispatch');
+    dispatch(HandleDataAction2(52));
+  },
+
   /*
-    //redux-act
-    MyButtonClickFunc(){
-      //   console.log("button pressed : " +field_value);
-
-        //  let element = <TableRow><TableCell> { field_value  } </TableCell></TableRow> ;
-         //   field.push(element);
-
-
-     // dispatch(
-     // rest.actions.reducer_module1({}, { body: JSON.stringify(postBody) }),
-     //);
-        //dispatch(HandleDataAction2());
-
-       // this.setState(this.state),
-    
-        //dispatch(HandleDataAction2());
-    
-    },
-    */
+      //redux-act
+      MyButtonClickFunc(){
+        //   console.log("button pressed : " +field_value);
+  
+          //  let element = <TableRow><TableCell> { field_value  } </TableCell></TableRow> ;
+           //   field.push(element);
+  
+  
+       // dispatch(
+       // rest.actions.reducer_module1({}, { body: JSON.stringify(postBody) }),
+       //);
+          //dispatch(HandleDataAction2());
+  
+         // this.setState(this.state),
+      
+          //dispatch(HandleDataAction2());
+      
+      },
+      */
   //http-request via rest here
   MyButtonClickFunc2() {
-    console.log('Rest function');
+    console.log(
+      '----------------------------------------- Rest function ------------------------------------',
+    );
     let postBody = {
       data1: field,
     };
@@ -98,6 +109,8 @@ export default class Test7 extends React.Component {
   }
 
   addElement() {
+    // initialState.value = 5;
+
     console.log('add element to table');
     let element = (
       <TableRow>
@@ -109,6 +122,10 @@ export default class Test7 extends React.Component {
     field.push(field_value);
     field_elements.push(element);
     this.setState(this.state);
+
+    //test
+    if (field_value === '4488') initialState.value = 10;
+    else initialState.value = 5;
   }
 
   drawButton() {
@@ -156,7 +173,13 @@ export default class Test7 extends React.Component {
 
   drawTextField() {
     return (
-      <TextField onChange={event => (field_value = event.target.value)}>
+      <TextField
+        onChange={event => {
+          field_value = event.target.value;
+          this.props.HandleDataTest();
+          console.log('1199');
+        }}
+      >
         {' '}
       </TextField>
     );
@@ -190,6 +213,14 @@ export default class Test7 extends React.Component {
   }
 
   render() {
+    let val = '';
+
+    if (initialState.value === 10) {
+      val = <Button style={{ color: 'orange' }}> Hidden button </Button>;
+    } else {
+      val = <div> Nothing special </div>;
+    }
+
     return (
       <div className="luokka1">
         {' '}<p>
@@ -197,8 +228,10 @@ export default class Test7 extends React.Component {
         </p>{' '}
         <br />
         <br /> {this.drawTextField()} {this.drawButton()} {this.drawButton2()}{' '}
-        {this.drawButton3()}  <br />
+        {this.drawButton3()} <br />
         <br /> Server response : {this.props.server_answer}
+        <br />
+        <br /> {val}
       </div>
     );
   }

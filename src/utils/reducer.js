@@ -12,7 +12,7 @@ import { reducer as test } from '../modules/Test4';
 
 import { reducer as multidata } from '../modules/Test5';
 
-//import { reducer as act_and_rest } from '../modules/Test5';
+import { reducer as act_and_rest } from '../modules/Test7';
 
 const reducers = {
   // Navigation drawer state
@@ -36,7 +36,7 @@ const reducers = {
   //Test5
   multidata,
   //Test7
-  //act_and_rest,
+  act_and_rest,
 };
 
 const appReducer = combineReducers(reducers);
