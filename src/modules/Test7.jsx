@@ -1,12 +1,16 @@
 import React from 'react';
 
 //field
-var field = [];
-var field_elements = [];
-var field_value = 'not defined';
+//var field = [];
+//var field_elements = [];
+//var field_value = 'not defined';
 
 //initialState (write react value dirrect to reducer, calling dispatch function you update your value)
-const initialState = { value: 'unknown', i_field_elements: [''] };
+//const initialState = { value: 'unknown', i_field_elements: ['66666444, 343456'] };
+const initialState = {
+  value: 'unknown',
+  i_field_elements: ['66666444, 343456'],
+};
 
 import rest from '../utils/rest';
 
@@ -30,27 +34,24 @@ import { connect } from 'react-redux';
 
 import { createAction, createReducer } from 'redux-act';
 export const HandleDataAction2 = createAction('handle_action2');
+export const InputValue = createAction('inputvalue_action1');
 
 export const reducer = createReducer(
   {
-    [HandleDataAction2]: (state, tmp) => {
-      state.value = field_value;
+    [HandleDataAction2]: state => {
+      //state.value = field_value;
 
       console.log(
-        ' ********************* Button add data presset 2 ' + state.value,
+        '====== Redux -> HandleDataAction2 function : ' + state.value,
       );
 
-      //dispatch(HandleDataAction2());
-      let element = (
-        <TableRow>
-          <TableCell>
-            {' '}{field_value}{' '}
-          </TableCell>
-        </TableRow>
-      );
-      //field.push(element);
+      state.i_field_elements.push(state.value);
 
-      return { state };
+      return { ...state };
+    },
+    [InputValue]: (state, params) => {
+      state.value = params;
+      return { ...state };
     },
   },
   initialState,
@@ -59,12 +60,16 @@ export const reducer = createReducer(
 const mapStateToProps = state => ({
   //value: state.value
   server_answer: state.reducer_module2.data.foo,
+  redux_store_answer: state.act_and_rest.i_field_elements,
 });
 
 const mapDispatchToProps = dispatch => ({
   HandleDataTest() {
     console.log('handle data dispatch');
-    dispatch(HandleDataAction2(52));
+    dispatch(HandleDataAction2());
+  },
+  InputValue(field_value) {
+    dispatch(InputValue(field_value));
   },
 
   /*
@@ -88,12 +93,13 @@ const mapDispatchToProps = dispatch => ({
       },
       */
   //http-request via rest here
-  MyButtonClickFunc2() {
+  MyButtonClickFunc2(fields) {
     console.log(
       '----------------------------------------- Rest function ------------------------------------',
     );
     let postBody = {
-      data1: field,
+      // data1: field,
+      data1: fields,
     };
     dispatch(
       rest.actions.reducer_module2({}, { body: JSON.stringify(postBody) }),
@@ -103,30 +109,12 @@ const mapDispatchToProps = dispatch => ({
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Test7 extends React.Component {
+  /*
   constructor(props) {
     super(props);
     this.state = {};
   }
-
-  addElement() {
-    // initialState.value = 5;
-
-    console.log('add element to table');
-    let element = (
-      <TableRow>
-        <TableCell>
-          {' '}{field_value}{' '}
-        </TableCell>
-      </TableRow>
-    );
-    field.push(field_value);
-    field_elements.push(element);
-    this.setState(this.state);
-
-    //test
-    if (field_value === '4488') initialState.value = 10;
-    else initialState.value = 5;
-  }
+  */
 
   drawButton() {
     //onClick={() => this.props.MyButtonClickFunc()
@@ -134,7 +122,10 @@ export default class Test7 extends React.Component {
       <div>
         {' '}<Button
           style={{ backgroundColor: 'silver', fontSize: 24, color: 'blue' }}
-          onClick={() => this.addElement()}
+          onClick={() => {
+            //this.addElement();
+            this.props.HandleDataTest();
+          }}
         >
           {' '}Add new field{' '}
         </Button>{' '}
@@ -147,7 +138,8 @@ export default class Test7 extends React.Component {
       <div>
         {' '}<Button
           style={{ backgroundColor: 'silver', fontSize: 24, color: 'green' }}
-          onClick={() => this.props.MyButtonClickFunc2()}
+          onClick={() =>
+            this.props.MyButtonClickFunc2(this.props.redux_store_answer)}
         >
           {' '}Send to server{' '}
         </Button>{' '}
@@ -161,8 +153,12 @@ export default class Test7 extends React.Component {
         {' '}<Button
           style={{ backgroundColor: 'silver', fontSize: 24, color: 'red' }}
           onClick={() => {
-            field_elements.splice(0, field_elements.length);
-            this.setState(this.state);
+            // field_elements.splice(0, field_elements.length);
+            // this.setState(this.state);
+            this.props.redux_store_answer.splice(
+              0,
+              this.props.redux_store_answer.lenght,
+            );
           }}
         >
           {' '}Clear{' '}
@@ -175,8 +171,9 @@ export default class Test7 extends React.Component {
     return (
       <TextField
         onChange={event => {
-          field_value = event.target.value;
-          this.props.HandleDataTest();
+          //field_value = event.target.value;
+          // this.props.HandleDataTest();
+          this.props.InputValue(event.target.value);
           console.log('1199');
         }}
       >
@@ -186,21 +183,10 @@ export default class Test7 extends React.Component {
   }
 
   drawLayout() {
-    let gui = '';
-
-    let solut = (
-      <TableRow>
-        <TableCell>
-          {' '}{field}{' '}
-        </TableCell>
-      </TableRow>
-    );
-    //gui.push(solut)
-
     let koko_taulu = (
       <Table>
         <TableBody>
-          {field_elements}
+          {this.props.redux_store_answer}
         </TableBody>
       </Table>
     );
@@ -208,6 +194,9 @@ export default class Test7 extends React.Component {
     return (
       <div>
         {' '}{koko_taulu}
+        <br />
+        <br />
+        Redux- act store : {this.props.redux_store_answer}
       </div>
     );
   }
