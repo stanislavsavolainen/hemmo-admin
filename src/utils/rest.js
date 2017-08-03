@@ -15,10 +15,8 @@ export const injectStore = _store => {
 /*
 // Endpoint configurations
 These example endpoints can be called by dispatching the respective actions, e.g:
-
 dispatch(rest.actions.teams.post({teamId: 42}, { body: JSON.stringify(exampleData) }));
 Results in: POST /teams?teamId=42 with POST data from 'exampleData'
-
 Result of request can be found in: `state.teams.data`
 Information about request: `state.teams.error`, `state.teams.sync`, `state.teams.error`...
 */
@@ -133,7 +131,7 @@ const rest = reduxApi({
         meta: emptyMeta,
         name: 'Feedback',
       },
-      action, // options : { method : 'GET'}
+      action,
     ) {
       if (data) {
         return {
@@ -215,6 +213,58 @@ const rest = reduxApi({
       }
       return data;
     },
+  },
+  organisations: {
+    url: `${apiRoot}/organisations`,
+    transformer(
+      data,
+      prevData = {
+        entries: [],
+        meta: emptyMeta,
+        name: 'Organisations',
+      },
+      action,
+    ) {
+      if (data) {
+        return {
+          ...prevData,
+          entries: data.data,
+          meta: data.meta,
+        };
+      } else {
+        return {
+          ...prevData,
+        };
+      }
+    },
+    options: {
+      method: 'GET',
+    },
+  },
+  organisationCreate: {
+    url: `${apiRoot}/organisations`,
+    reducerName: 'organisationUnit',
+    transformer(data, prevData) {
+      if (data) {
+        return { ...data };
+      } else {
+        return { ...prevData };
+      }
+    },
+    options: {
+      method: 'POST',
+    },
+  },
+  organisationUnit: {
+    url: `${apiRoot}/organisations/:organisationId`,
+    transformer(data, prevData) {
+      if (data) {
+        return { ...data };
+      } else {
+        return { ...prevData };
+      }
+    },
+    crud: true,
   },
   reducer_module1: {
     url: `${apiRoot}/link1`,
